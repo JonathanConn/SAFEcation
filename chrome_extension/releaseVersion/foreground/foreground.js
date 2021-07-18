@@ -1,8 +1,6 @@
 //grab url
 
 
-
-
 //scripts that get run during completed load of site
 //removes untouchable layer which blocks href changes
 remove_top_layer()
@@ -13,28 +11,46 @@ function grab_locations() {
     let locations = document.getElementsByClassName("_1spi1ps9")
     const searchDiv = document.getElementsByClassName("_15eotbx")
 
+
     let format;
     let prev;
+
+    console.log("main page")
     for (let i = 0; i < locations.length; i++) {
+        let score = (Math.random() * 10)
+        color = get_rating(score)
+        score = Math.round(score * 100) / 100
         format = locations[i].textContent.replaceAll(" ", "+")
         prev = searchDiv[i].textContent
-        searchDiv[i].innerHTML = prev + "    " + "<a href=\"https://www.google.com/maps/search/" + format + "\"><button style='background-color: " + get_rating("null") + "; /* Green */\n" +
+        searchDiv[i].innerHTML = prev.slice(0, 3) + "m. " + "<a href=\"https://www.google.com/maps/search/" + format + "\"><button style='background-color: " + color + ";\n" +
             "  border: none;\n" +
             "  color:#ffffff;\n" +
             "  text-align: center;\n" +
             "  text-decoration: none;\n" +
             "  display: inline-block;\n" +
             "  border-radius: 4px;" +
-            "  font-size: 16px;'>Safety check</button></ahref>"
+            "  font-size: 16px;'>Safety check</button></ahref>" +
+            "<a href=\"https://www.google.com/maps/search/" + format + "\"><button style='background-color: " + color + ";\n" +
+            "  border: none;\n" +
+            "  color:#ffffff;\n" +
+            "  text-align: center;\n" +
+            "  text-decoration: none;\n" +
+            "  display: inline-block;\n" +
+            "  border-radius: 4px;" +
+            "  font-size: 16px;'>" + score + "/10</button></ahref>"
 
 
     }
+
     const searchDiv2 = document.getElementsByClassName("_mjvmnj")
-    console.log(searchDiv2)
+
+    console.log("second page")
 
     let prev2;
     for (let i = 0; i < searchDiv2.length; i++) {
-        searchDiv2[i].innerHTML = "<a href=\"https://www.google.com/maps/search/" + get_loc() + "\"><button style='background-color: " + get_rating("null") + "; /* Green */\n" +
+        let score = Math.floor(Math.random() * 10)
+        color = get_rating(score)
+        searchDiv2[i].innerHTML = "<a href=\"https://www.google.com/maps/search/" + get_loc() + "\"><button style='background-color: " + color + ";\n" +
             "  border: none;\n" +
             "  color:#ffffff;\n" +
             "  text-align: center;\n" +
@@ -63,11 +79,9 @@ function remove_top_layer() {
 }
 
 
-function get_rating(location) {
-    //get score from database
-    let score = Math.floor(Math.random() * 10)
-
-
+function get_rating(score) {
+    score = Math.floor(score)
+    console.log(score)
     switch (score) {
         case (score <= 3):
             return "#900011"
@@ -85,6 +99,6 @@ function get_rating(location) {
 
 }
 
-function get_loc(){
+function get_loc() {
     return window.location.toString().slice(25).split("/")[0].replaceAll("-", " ");
 }
