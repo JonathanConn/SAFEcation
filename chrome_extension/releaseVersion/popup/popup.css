@@ -1,0 +1,18 @@
+h2 {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    color: red;
+}
+
+html {
+    white-space: nowrap;
+    height: 60%;
+    width: 60%;
+}
+
+body {
+    min-height: 60%;
+    min-width: 60%;
+}

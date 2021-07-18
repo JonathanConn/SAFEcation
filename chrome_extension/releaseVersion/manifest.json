@@ -1,0 +1,33 @@
+{
+  "name": "safe-cation TEST",
+  "description": "This is only pain at this point",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "Logo.png",
+    "32": "Logo.png",
+    "48": "Logo.png",
+    "128": "Logo.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icons": {
+      "16": "Logo.png",
+      "32": "Logo.png",
+      "48": "Logo.png",
+      "128": "Logo.png"
+    },
+    "default_popup": "./popup/popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
